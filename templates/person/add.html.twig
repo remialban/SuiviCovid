@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter une personne{% endblock %}
+
+{% block body %}
+<h1>Ajouter une personne</h1>
+<hr>
+
+{{ form_start(form)}}
+<div class="row g-3">
+    <div class="col-md-6">
+        {{form_label(form.name, "Nom :", {'label_attr':{'class':'form-label'}}) }}
+        <div class="input-group">
+            <span class="input-group-text" id="basic-addon3"><i class="bi bi-person"></i></span>
+            {{ form_widget(form.name, {'attr': {'placeholder': 'Ex : FRONTERE'}}) }}
+          </div>
+        </div>
+        <div class="col-md-6">
+          {{form_label(form.firstName, "Prénom :", {'label_attr':{'class':'form-label'}}) }}
+          <div class="input-group">
+            <span class="input-group-text" id="basic-addon3"><i class="bi bi-person"></i></span>
+            {{ form_widget(form.firstName, {'attr': {'placeholder': 'Ex : Valéry'}}) }}
+
+          </div>
+        </div>
+        <div class="col-md-6">
+            {{form_label(form.phoneNumber, "Numéro de téléphone :", {'label_attr':{'class':'form-label'}}) }}
+            <div class="input-group">
+                <span class="input-group-text" id="basic-addon3"><i class="bi bi-telephone"></i></span>
+                {{ form_widget(form.phoneNumber, {'attr': {'placeholder': 'Ex : 01 05 16 13 75'}}) }}
+            </div>
+        </div>
+        <div class="col-md-6">
+            {{form_label(form.email, "Email :", {'label_attr':{'class':'form-label'}}) }}
+            <div class="input-group">
+                <span class="input-group-text" id="basic-addon3"><i class="bi bi-envelope"></i></span>
+                {{ form_widget(form.email, {'attr': {'placeholder': 'Ex : valery.frontere@lorem.fr'}}) }}
+            </div>
+        </div>
+        <div class="col-12">
+            {{form_label(form.nameStreetAddress, "Rue :", {'label_attr':{'class':'form-label'}}) }}
+            <div class="input-group">
+                <span class="input-group-text" id="basic-addon3"><i class="bi bi-geo-alt"></i></span>
+                {{ form_widget(form.nameStreetAddress, {'attr': {'placeholder': 'Ex : 1 impasse de l\'Eglise'}}) }}
+          </div>
+        </div>
+        <div class="col-12">
+            {{form_label(form.additionalAddress, "Complément d’identification du destinataire ou point de remise à
+            l’intérieur du bâtiment :", {'label_attr':{'class':'form-label'}}) }}
+            <div class="input-group">
+                <span class="input-group-text" id="basic-addon3"><i class="bi bi-geo-alt"></i></span>
+                {{ form_widget(form.additionalAddress, {'attr': {'placeholder': 'Ex : Appartement 12 Escalier C'}}) }}
+            </div>
+            <div id="emailHelp" class="form-text">
+                N° appartement, boite aux lettres, étage, couloir
+            </div>
+        </div>
+        <div class="col-12">
+            {{form_label(form.secondAdditionalAddress, "Complément d’identification du point géographique – extérieur du
+            bâtiment :", {'label_attr':{'class':'form-label'}} ) }}
+            <div class="input-group">
+                <span class="input-group-text" id="basic-addon3"><i class="bi bi-geo-alt"></i></span>
+                {{ form_widget(form.secondAdditionalAddress, {'attr': {'placeholder': 'Ex : Résidences Les Tilleuls'}}) }}
+            </div>
+            <div id="emailHelp" class="form-text">
+                Entrée, tour, bâtiment, immeuble, résidence
+            </div>
+        </div>
+        <div class="col-md-6">
+            {{ form_label(form.zipCode, "Code postal :", {'label_attr':{'class':'form-label'}} ) }}
+            <div class="input-group">
+                <span class="input-group-text" id="basic-addon3"><i class="bi bi-geo-alt"></i></span>
+                {{ form_widget(form.zipCode, {'attr': {'placeholder': 'Ex : 01090'}}) }}
+            </div>
+        </div>
+        <div class="col-md-6">
+          {{ form_label(form.municipality, "Commune :", {'label_attr':{'class':'form-label'}} ) }}
+          <div class="input-group">
+            <span class="input-group-text" id="basic-addon3"><i class="bi bi-geo-alt"></i></span>
+            {{ form_widget(form.municipality, {'attr': {'placeholder': 'Ex : Francheleins'}}) }}
+
+          </div>
+        </div>
+        <div class="col-md-12">
+          {{ form_row(form.isVaccinated, {'row_attr': {'class': 'form-switch'}}) }}
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">
+            <i class="bi bi-check2-circle"></i> Valider
+          </button>
+        </div>
+      </div>
+
+{{ form_end(form) }}
+{% endblock %}
