@@ -1,0 +1,121 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+<h1>Suivi des cas COVID</h1>
+      <a href="add.html" style="font-weight: bold" class="btn btn-primary"
+        ><i class="bi bi-person-plus-fill"></i> Ajouter une personne</a
+      >
+      <a href="cas-covid.html" style="font-weight: bold" class="btn btn-danger"
+        ><i class="bi bi-shield-fill-exclamation"></i> Déclarer un cas covid</a
+      >
+
+      <hr />
+      <div class="row row-cols-md-6 g-6">
+        <div class="col-md-6">
+          <div
+            class="card text-white bg-primary"
+            style="font-weight: bold; height: 100%"
+          >
+            <div class="card-header">
+              Nombre de personnes venues aujourd'hui
+            </div>
+            <div class="card-body align-items-center">
+              <div class="row align-items-center" style="height: 100%;">
+                <div class="col-6">
+                  <h5 class="card-title text-center">
+                    <span style="font-size: 100px; font-weight: bold"
+                      ><i class="bi bi-people-fill"></i
+                    ></span>
+                  </h5>
+                </div>
+                <div class="col-6">
+                  <h5 style="font-size: 50px; font-weight: bold">999</h5>
+                  <p class="card-text">personnes venues aujourd'hui</p>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <video
+          src="{{ asset('videos/info-coronavirus.mp4') }}"
+          id="video-coronavirus"
+          class="col-md-6 rounded"
+          muted
+          width="100%"
+          style="padding: 0; margin: 0"
+          autoplay
+          loop
+        ></video>
+      </div>
+      <br />
+      <div class="row row-cols-md-5">
+        <div class="col-md-6">
+          <h2 style="color: #e1000f; font-weight: bold">LIEN UTILES</h2>
+          <ul>
+            <li>
+              <a href="https://www.gouvernement.fr/info-coronavirus"
+                >Info coronavirus</a
+              >
+              : Toutes les <b>informations</b> concernant la crise sanitaire
+            </li>
+            <li>
+              <a href="https://covidtracker.fr/">CovidTracker</a> : Suivi de
+              l'épidimie du coronavirus
+            </li>
+            <li>
+              <a href="https://www.sante.fr/cf/centres-depistage-covid.html"
+                >Centre dépistage covid</a
+              >
+              : Trouver un <b>centre de tests</b> covid proche de chez vous
+            </li>
+            <li>
+              <a href="https://www.sante.fr/cf/centres-vaccination-covid.html"
+                >Centre vaccination covid</a
+              >
+              : Trouver un <b>centre de vaccination</b> proche des chez vous
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-6">
+          <a
+            href="https://www.gouvernement.fr/info-coronavirus/tousanticovid"
+            target="_blank"
+          >
+            <img
+              class="rounded"
+              width="100%"
+              src="{{ asset('img/affiche-application-tous-anti-covid.png') }}"
+              alt=""
+            />
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="bg-primary p-5 mt-5">
+      <div class="container text-white">
+        <p>
+          Ce site n'est pas un site officiel du gouvernement même s'il utilise
+          les même codes couleurs et la même typographie ©Marianne : il a été
+          réalisé par un adolescent de 16 ans. Vous pouvez retrouver le code sur
+          <a href="https://github.com/remialban" class="link-light">Github</a>.
+          Ce site utilise égallement
+          <a href="https://getbootstrap.com/" class="link-light">Bootstrap</a>.
+        </p>
+      </div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document
+        .getElementById("video-coronavirus")
+        .addEventListener("click", () => {
+          document.getElementById("video-coronavirus").volume = 1;
+          document.getElementById("video-coronavirus").muted =
+            !document.getElementById("video-coronavirus").muted;
+        });
+</script>
+{% endblock %}
