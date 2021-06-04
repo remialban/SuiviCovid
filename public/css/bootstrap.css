@@ -8,12 +8,12 @@
 @font-face {
   font-family: "mariane";
   font-weight: normal;
-  src: url("/home/remi/projects/covid/bootstrap/fonts/marianne-regular-webfont.woff");
+  src: url("/fonts/marianne-regular-webfont.woff");
 }
 @font-face {
   font-family: "mariane";
   font-weight: bold;
-  src: url("/home/remi/projects/covid/bootstrap/fonts/marianne-bold-webfont.woff");
+  src: url("/fonts/marianne-bold-webfont.woff");
 }
 :root {
   --bs-blue: #000091;
