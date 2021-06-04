@@ -4974,10 +4974,6 @@
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
-
-  var Turbolinks = require("turbolinks");
-
-  Turbolinks.start();
   var index_umd = {
     Alert,
     Button,

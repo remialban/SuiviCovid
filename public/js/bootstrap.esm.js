@@ -4942,17 +4942,5 @@ class Toast extends BaseComponent {
 
 defineJQueryPlugin(Toast);
 
-/**
- * --------------------------------------------------------------------------
- * Bootstrap (v5.0.1): index.esm.js
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
- * --------------------------------------------------------------------------
- */
-
-var Turbolinks = require("turbolinks");
-
-Turbolinks.start();
-console.log("coucou");
-
 export { Alert, Button, Carousel, Collapse, Dropdown, Modal, Offcanvas, Popover, ScrollSpy, Tab, Toast, Tooltip };
 //# sourceMappingURL=bootstrap.esm.js.map
