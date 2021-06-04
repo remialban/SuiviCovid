@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Erreur 500{% endblock %}
+
+{% block body %}
+<h1>Erreur 500 : Le serveur a rencontré une erreur</h1>
+<hr>
+<p>Le serveur n'a pas réussi à traiter votre demande.</p>
+<a class="btn btn-primary" href="{{ path('home') }}"><i class="bi bi-arrow-left-short"></i> Retourner à la page d'accueil</a>
+{% endblock %}
