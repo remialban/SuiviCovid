@@ -22,7 +22,7 @@
   <body class="bg-light">
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
       <div class="container-fluid">
-        <a class="navbar-brand" href="index.html">SuiviCovid</a>
+        <a class="navbar-brand" href="{{ path('home') }}">SuiviCovid</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -39,7 +39,20 @@
     <div class="container mt-3">
         {% block body %}{% endblock %}
     </div>
+    <div class="bg-primary p-5 mt-5">
+      <div class="container text-white">
+        <p>
+          Ce site n'est pas un site officiel du gouvernement même s'il utilise
+          les même codes couleurs et la même typographie ©Marianne : il a été
+          réalisé par un adolescent de 16 ans. Vous pouvez retrouver le code sur
+          <a href="https://github.com/remialban" class="link-light">Github</a>.
+          Ce site utilise égallement
+          <a href="https://getbootstrap.com/" class="link-light">Bootstrap</a>.
+        </p>
+      </div>
     <script src="dist/js/bootstrap.bundle.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.0.0/turbolinks.js"></script>
     {% block scripts %}{% endblock %}
   </body>
 </html>
