@@ -7,34 +7,37 @@ body %}
   class="btn btn-primary"
   ><i class="bi bi-person-plus-fill"></i> Ajouter une personne</a
 >
-<a href="cas-covid.html" style="font-weight: bold" class="btn btn-danger"
+<a href="{{ path('person_list') }}" style="font-weight: bold" class="btn btn-danger"
   ><i class="bi bi-shield-fill-exclamation"></i> Déclarer un cas covid</a
 >
 
 <hr />
 <div class="row row-cols-md-6 g-6">
   <div class="col-md-6">
-    <div
-      class="card text-white bg-primary"
-      style="font-weight: bold; height: 100%"
-    >
-      <div class="card-header">Nombre de personnes venues aujourd'hui</div>
-      <div class="card-body align-items-center">
-        <div class="row align-items-center" style="height: 100%">
-          <div class="col-6">
-            <h5 class="card-title text-center">
-              <span style="font-size: 100px; font-weight: bold"
-                ><i class="bi bi-people-fill"></i
-              ></span>
-            </h5>
+    <a href="{{ path('person_list') }}" style="text-decoration: none !important">
+      <div
+        class="card text-white bg-primary"
+        style="font-weight: bold; height: 100%"
+      >
+        <div class="card-header">Nombre de personnes venues aujourd'hui</div>
+        <div class="card-body align-items-center">
+          <div class="row align-items-center" style="height: 100%">
+            <div class="col-6">
+              <h5 class="card-title text-center">
+                <span style="font-size: 100px; font-weight: bold"
+                  ><i class="bi bi-people-fill"></i
+                ></span>
+              </h5>
+            </div>
+            <div class="col-6">
+              <h5 style="font-size: 50px; font-weight: bold">{{ person_this_day_number }}</h5>
+              <p class="card-text">personnes venues aujourd'hui</p>
+            </div>
           </div>
-          <div class="col-6">
-            <h5 style="font-size: 50px; font-weight: bold">{{ person_this_day_number }}</h5>
-            <p class="card-text">personnes venues aujourd'hui</p>
-          </div>
-        </div>
       </div>
-    </div>
+   </div>
+  </a>
+
   </div>
 
   <video

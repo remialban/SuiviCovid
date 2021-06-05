@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %} {% block title %}Rechercher{% endblock %} {%
+block body %}
+<h1>Rechercher</h1>
+<hr />
+<div class="table-responsive-md">
+  <table class="table table-striped align-middle text-center">
+    <thead class="text-white bg-primary">
+      <tr>
+        <th scope="col"><i class="bi bi-calendar-date-fill"></i> Date de venu :</th>
+        <th scope="col"><i class="bi bi-person-circle"></i> Nom :</th>
+        <th scope="col"><i class="bi bi-person-circle"></i> Prénom :</th>
+        <th scope="col"><i class="bi bi-geo-alt-fill"></i> Commune :</th>
+        <th scope="col"><i class="bi bi-check-circle-fill"></i> Est vacciné ?</th>
+        <th scope="col"><i class="bi bi-gear-fill"></i> Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for person in persons %}
+      <tr>
+        <td>
+          {{ person.addedAt|format_datetime("long", "none", locale='fr') }}
+        </td>
+        <td>{{ person.name }}</td>
+        <td>{{ person.firstName }}</td>
+        <td>
+          {% if person.zipCode is not empty and person.municipality is not empty
+          %}
+          {{ person.municipality }} ({{ person.zipCode|slice(0,2) }}) {% endif
+          %}
+        </td>
+        <td class="text-primary">
+          {% if person.isVaccinated %}<i class="bi bi-check-circle-fill"></i>{% endif %}
+        </td>
+        <td>
+          <a href="#" class="btn btn-outline-primary"
+            ><i class="bi bi-eye-fill"></i> Voir</a
+          >
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

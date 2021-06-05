@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Person;
 use App\Form\AddPersonType;
+use App\Repository\PersonRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -33,6 +34,14 @@ class PersonController extends AbstractController
 
         return $this->render('person/add.html.twig', [
             'form' => $form->createView()
+        ]);
+    }
+
+    #[Route('/liste', name: 'person_list')]
+    public function list(PersonRepository $personRepository)
+    {
+        return $this->render('person/list.html.twig', [
+            'persons' => $personRepository->findAll()
         ]);
     }
 }
