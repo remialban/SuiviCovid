@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Person;
 use App\Form\AddPersonType;
 use App\Repository\PersonRepository;
+use Doctrine\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -12,8 +13,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class PersonController extends AbstractController
 {
-    #[Route('/ajouter', name: 'person_add')]
-    #[Route('/modifier/{id}', name: 'person_edit')]
+    #[Route('/personne/ajouter', name: 'person_add')]
+    #[Route('/personne/{id}/modifier', name: 'person_edit')]
     public function index(Person $person = null, Request $request): Response
     {
         $add = false;
@@ -41,7 +42,7 @@ class PersonController extends AbstractController
         ]);
     }
 
-    #[Route('/liste', name: 'person_list')]
+    #[Route('/personne/liste', name: 'person_list')]
     public function list(PersonRepository $personRepository)
     {
         return $this->render('person/list.html.twig', [
@@ -55,5 +56,16 @@ class PersonController extends AbstractController
         return $this->render('person/show.html.twig', [
             "person" => $person
         ]);
+    }
+
+    #[Route("/personne/{id}/supprimer", name: 'person_delete')]
+    public function delete(Person $person)
+    {
+        $manager = $this->getDoctrine()->getManager();
+
+        $manager->remove($person);
+        $manager->flush();
+        
+        return $this->redirectToRoute("home");
     }
 }
