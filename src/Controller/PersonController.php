@@ -44,4 +44,12 @@ class PersonController extends AbstractController
             'persons' => $personRepository->findAll()
         ]);
     }
+
+    #[Route("/personne/{id}", name: 'person_show')]
+    public function show(Person $person, Request $request)
+    {
+        return $this->render('person/show.html.twig', [
+            "person" => $person
+        ]);
+    }
 }

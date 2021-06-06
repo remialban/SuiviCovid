@@ -32,7 +32,7 @@ block body %}
           {% if person.isVaccinated %}<i class="bi bi-check-circle-fill"></i>{% endif %}
         </td>
         <td>
-          <a href="#" class="btn btn-outline-primary"
+          <a href="{{ path('person_show', {'id': person.id}) }}" class="btn btn-outline-primary"
             ><i class="bi bi-eye-fill"></i> Voir</a
           >
         </td>

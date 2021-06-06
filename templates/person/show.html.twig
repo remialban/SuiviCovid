@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ person.firstName|capitalize }} {{ person.name|upper }}{% endblock %}
+
+{% block body %}
+<h1>{{ person.firstName|capitalize }} {{ person.name|upper }}</h1>
+<a href="{{ app.request.headers.get('referer') }}" class="btn btn-primary"><i class="bi bi-arrow-left"></i> Retour</a>
+<hr/>
+<p><b>Nom :</b> {{ person.name|upper }}</p>
+<p><b>Prénom :</b> {{ person.firstName }}</p>
+<p><b>Téléphone :</b> {{ person.phoneNumber }}</p>
+<p><b>Email :</b> {{ person.email }}</p>
+<p><b>Adresse :</b></p>
+<p>{{ person.nameStreetAddress }}</p>
+<p>{{ person.additionalAddress }}</p>
+<p>{{ person.secondAdditionalAddress }}</p>
+<p><b>Code postal :</b> {{ person.zipCode }}</p>
+<p><b>Ville :</b> {{ person.municipality }}</p>
+{% endblock %}
