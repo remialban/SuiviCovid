@@ -5,6 +5,7 @@
 {% block body %}
 <h1>{{ person.firstName|capitalize }} {{ person.name|upper }}</h1>
 <a href="{{ app.request.headers.get('referer') }}" class="btn btn-primary"><i class="bi bi-arrow-left"></i> Retour</a>
+<a href="{{ path('person_edit', {'id': person.id})}}" class="btn btn-outline-primary"><i class="bi bi-pencil-fill"></i> Modifier</a>
 <hr/>
 <p><b>Nom :</b> {{ person.name|upper }}</p>
 <p><b>Prénom :</b> {{ person.firstName }}</p>

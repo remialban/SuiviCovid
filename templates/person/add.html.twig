@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Ajouter une personne{% endblock %}
+{% block title %}{% if add %}Ajouter une personne{% else %}Modifier une personne{% endif %}{% endblock %}
 
 {% block body %}
-<h1>Ajouter une personne</h1>
+<h1><i class="bi bi-person-lines-fill"></i> {% if add %}Ajouter une personne{% else %}Modifier une personne{% endif %}</h1>
 <hr>
 
 {{ form_start(form)}}

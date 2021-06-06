@@ -13,11 +13,14 @@ use Symfony\Component\Routing\Annotation\Route;
 class PersonController extends AbstractController
 {
     #[Route('/ajouter', name: 'person_add')]
+    #[Route('/modifier/{id}', name: 'person_edit')]
     public function index(Person $person = null, Request $request): Response
     {
+        $add = false;
         if ($person == null)
         {
             $person = new Person();
+            $add = true;
         }
         $form = $this->createForm(AddPersonType::class, $person);
         $form->handleRequest($request);
@@ -33,7 +36,8 @@ class PersonController extends AbstractController
         }
 
         return $this->render('person/add.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'add' => $add
         ]);
     }
 
