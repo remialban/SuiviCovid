@@ -67,7 +67,7 @@ class PersonSearch
 
         $json = [
             "id_entity" => $person->getId(),
-            "firstName" => $person->getName(),
+            "firstName" => $person->getFirstName(),
             "name" => $person->getName(),
             "isVaccinated" => $person->getIsVaccinated()
         ];
@@ -107,8 +107,14 @@ class PersonSearch
             $json["municipality"] = $person->getMunicipality();
         }
 
-        $response = $this->run("POST", "collections/persons/documents", $json);
-        $person->setIdTypeSense($response['id']);
+        if ($person->getIdTypeSense())
+        {
+            $response = $this->run("PATCH", "collections/persons/documents/" . $person->getIdTypeSense(), $json);
+        } else
+        {
+            $response = $this->run("POST", "collections/persons/documents", $json);
+            $person->setIdTypeSense($response['id']);    
+        }
         $this->em->persist($person);
         $this->em->flush();
     }
