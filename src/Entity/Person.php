@@ -72,6 +72,11 @@ class Person
      */
     private $addedAt;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $idTypeSense;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -205,6 +210,18 @@ class Person
     public function setAddedAt(\DateTimeInterface $addedAt): self
     {
         $this->addedAt = $addedAt;
+
+        return $this;
+    }
+
+    public function getIdTypeSense(): ?int
+    {
+        return $this->idTypeSense;
+    }
+
+    public function setIdTypeSense(?int $idTypeSense): self
+    {
+        $this->idTypeSense = $idTypeSense;
 
         return $this;
     }
