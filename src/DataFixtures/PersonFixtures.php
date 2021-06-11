@@ -3,12 +3,19 @@
 namespace App\DataFixtures;
 
 use App\Entity\Person;
+use App\Utils\PersonSearch;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker;
 
 class PersonFixtures extends Fixture
 {
+    private $personSearch;
+
+    public function __construct(PersonSearch $personSearch)
+    {
+        $this->personSearch = $personSearch;
+    }
     public function load(ObjectManager $manager)
     {
         $faker = Faker\Factory::create("FR_fr");
@@ -42,9 +49,7 @@ class PersonFixtures extends Fixture
                     $person->setSecondAdditionalAddress($faker->buildingNumber);
                 }
             }
-            $manager->persist($person);
+            $this->personSearch->updatePerson($person);
         }
-
-        $manager->flush();
     }
 }

@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Person;
 use App\Form\AddPersonType;
 use App\Repository\PersonRepository;
+use App\Utils\PersonSearch;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,7 +16,7 @@ class PersonController extends AbstractController
 {
     #[Route('/personne/ajouter', name: 'person_add')]
     #[Route('/personne/{id}/modifier', name: 'person_edit')]
-    public function index(Person $person = null, Request $request): Response
+    public function index(Person $person = null, Request $request, PersonSearch $personSearch): Response
     {
         $add = false;
         if ($person == null)
@@ -29,10 +30,7 @@ class PersonController extends AbstractController
         if ($form->isSubmitted() && $form->isValid())
         {
             $person->setAddedAt(new \DateTime());
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($person);
-            $em->flush();
-
+            $personSearch->updatePerson($person);
             return $this->redirectToRoute("home");
         }
 
