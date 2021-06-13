@@ -174,5 +174,7 @@ class PersonSearch
     public function removePerson(Person $person)
     {
         $this->run("DELETE", "collections/persons/documents/" . $person->getIdTypeSense());
+        $this->em->remove($person);
+        $this->em->flush();
     }
 }
