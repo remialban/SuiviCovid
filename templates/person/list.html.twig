@@ -2,6 +2,14 @@
 block body %}
 <h1>Rechercher</h1>
 <hr />
+<form method="get">
+  <label for="q" class="form-label">Rechercher une personne :</label>
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon3"><i class="bi bi-search"></i></span>
+    <input type="text" class="form-control" placeholder="Ex : DURANT Paris" id="q" name="q" >
+  </div>
+  <button type="submit" class="btn btn-primary mb-3"><i class="bi bi-search"></i> Rechercher</button>
+</form>
 <div class="table-responsive-md">
   <table class="table table-striped align-middle text-center">
     <thead class="text-white bg-primary">
@@ -14,6 +22,7 @@ block body %}
         <th scope="col"><i class="bi bi-gear-fill"></i> Actions</th>
       </tr>
     </thead>
+    <p><b>{{ resultsNumber }} personnes trouvées</b></p>
     <tbody>
       {% for person in persons %}
       <tr>
@@ -40,5 +49,42 @@ block body %}
       {% endfor %}
     </tbody>
   </table>
+
+
 </div>
+<nav>
+  <ul class="pagination justify-content-center">
+    <li class="page-item page-item {% if currentPage == 1 %}disabled{% endif %}"><a class="page-link" href="{{ path('person_list', {p: currentPage-1, q: query}) }}">Précédent</a></li>
+    {% if pageNumber > 6 %}
+      {% if (1 <= currentPage and currentPage <= 3) or (pageNumber -2 <= currentPage and currentPage <= pageNumber) %}
+        <li class="page-item {% if (1 == currentPage) %}active{% endif %}"><a class="page-link" href="{{ path('person_list', {p: 1, q: query}) }}">1</a></li>
+        <li class="page-item {% if (2 == currentPage) %}active{% endif %}"><a class="page-link" href="{{ path('person_list', {p: 2, q: query}) }}">2</a></li>
+        <li class="page-item {% if (3 == currentPage) %}active{% endif %}"><a class="page-link" href="{{ path('person_list', {p: 3, q: query}) }}">3</a></li>
+        <li class="page-item"><span class="page-link">...</span></li>
+        <li class="page-item {% if (pageNumber - 2 == currentPage) %}active{% endif %}"><a class="page-link" href="{{ path('person_list', {p: pageNumber - 2, q: query}) }}">{{ pageNumber - 2 }}</a></li>
+        <li class="page-item {% if (pageNumber - 1 == currentPage) %}active{% endif %}"><a class="page-link" href="{{ path('person_list', {p: pageNumber - 1, q: query}) }}">{{ pageNumber - 1 }}</a></li>
+        <li class="page-item {% if (pageNumber == currentPage) %}active{% endif %}"><a class="page-link" href="{{ path('person_list', {p: pageNumber, q: query}) }}">{{ pageNumber }}</a></li>
+      {% else %}
+        <li class="page-item"><a class="page-link" href="{{ path('person_list', {p: 1, q: query}) }}">1</a></li>
+        <li class="page-item"><span class="page-link">...</span></li>
+        <li class="page-item d-none d-md-block"><a class="page-link" href="{{ path('person_list', {p: currentPage - 1, q: query}) }}">{{ currentPage - 1 }}</a></li>
+        <li class="page-item active"><a class="page-link" href="{{ path('person_list', {p: currentPage, q: query}) }}">{{ currentPage }}</a></li>
+        <li class="page-item d-none d-md-block"><a class="page-link" href="{{ path('person_list', {p: currentPage + 1, q: query}) }}">{{ currentPage + 1 }}</a></li>
+        <li class="page-item"><a class="page-link" href="#">...</a></li>
+        <li class="page-item"><a class="page-link" href="{{ path('person_list', {p: pageNumber, q: query}) }}">{{ pageNumber }}</a></li>
+      {% endif %}
+    {% else %}  
+      {% for i in 1..pageNumber %}
+        {% if i == currentPage %}
+          <li class="page-item active"><a class="page-link" href="{{ path('person_list', {p: i, q: query}) }}">{{ i }}</a></li>
+        {% else %}
+          <li class="page-item"><a class="page-link" href="{{ path('person_list', {p: i, q: query}) }}">{{ i }}</a></li>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+    <li class="page-item {% if currentPage == pageNumber %}disabled{% endif %}"><a class="page-link" href="{{ path('person_list', {p: currentPage+1, q: query}) }}">Suivant</a></li>
+  </ul>
+</nav>
+<p class="text-center"><b>{{ resultsNumber }} personnes trouvées</b></p>
+
 {% endblock %}

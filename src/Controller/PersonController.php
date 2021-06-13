@@ -14,8 +14,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class PersonController extends AbstractController
 {
-    #[Route('/personne/ajouter', name: 'person_add')]
-    #[Route('/personne/{id}/modifier', name: 'person_edit')]
+    #[Route('/personnes/ajouter', name: 'person_add')]
+    #[Route('/personnes/{id}/modifier', name: 'person_edit')]
     public function index(Person $person = null, Request $request, PersonSearch $personSearch): Response
     {
         $add = false;
@@ -40,15 +40,21 @@ class PersonController extends AbstractController
         ]);
     }
 
-    #[Route('/personne/liste', name: 'person_list')]
-    public function list(PersonRepository $personRepository)
+    #[Route('/personnes/chercher', name: 'person_list')]
+    public function list(PersonRepository $personRepository, PersonSearch $personSearch, Request $request)
     {
+        $response = $personSearch->searchPerson($request->get("q", "*"), $request->get("p", 1), $request->get("number", 20));
+        $persons = $response['content'];
         return $this->render('person/list.html.twig', [
-            'persons' => $personRepository->findAll()
+            'persons' => $persons,
+            'pageNumber' => $response['page_numbers'],
+            'currentPage' => $response['page'],
+            "resultsNumber" => $response['found'],
+            "query" => $request->get("q", "*")
         ]);
     }
 
-    #[Route("/personne/{id}", name: 'person_show')]
+    #[Route("/personnes/{id}", name: 'person_show')]
     public function show(Person $person, Request $request)
     {
         return $this->render('person/show.html.twig', [
@@ -56,7 +62,7 @@ class PersonController extends AbstractController
         ]);
     }
 
-    #[Route("/personne/{id}/supprimer", name: 'person_delete')]
+    #[Route("/personnes/{id}/supprimer", name: 'person_delete')]
     public function delete(Person $person)
     {
         $manager = $this->getDoctrine()->getManager();
