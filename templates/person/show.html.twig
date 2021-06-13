@@ -36,7 +36,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-        <button type="button" class="btn btn-danger"><i class="bi bi-trash-fill"></i> Supprimer</button>
+        <a class="btn btn-danger" href={{ path('person_delete', {id: person.id}) }}><i class="bi bi-trash-fill"></i> Supprimer</a>
       </div>
     </div>
   </div>

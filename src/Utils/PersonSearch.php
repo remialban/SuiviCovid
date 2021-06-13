@@ -165,4 +165,14 @@ class PersonSearch
         
         return $response;
     }
+
+    /**
+     * Supprime une personne
+     * 
+     * @param Person $person Personne à supprimer
+     */
+    public function removePerson(Person $person)
+    {
+        $this->run("DELETE", "collections/persons/documents/" . $person->getIdTypeSense());
+    }
 }

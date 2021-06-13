@@ -63,12 +63,11 @@ class PersonController extends AbstractController
     }
 
     #[Route("/personnes/{id}/supprimer", name: 'person_delete')]
-    public function delete(Person $person)
+    public function delete(Person $person, PersonSearch $personSearch)
     {
         $manager = $this->getDoctrine()->getManager();
 
-        $manager->remove($person);
-        $manager->flush();
+        $personSearch->removePerson($person);
         
         return $this->redirectToRoute("home");
     }
