@@ -47,7 +47,6 @@ body %}
     muted
     width="100%"
     style="padding: 0; margin: 0"
-    autoplay
     loop
   ></video>
 </div>
@@ -100,6 +99,9 @@ body %}
     document.getElementById("video-coronavirus").volume = 1;
     document.getElementById("video-coronavirus").muted =
       !document.getElementById("video-coronavirus").muted;
+  });
+  document.addEventListener("turbolinks:load", function() {
+    document.getElementById("video-coronavirus").play()
   });
 </script>
 {% endblock %}
