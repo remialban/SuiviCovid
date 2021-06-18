@@ -1,0 +1,21 @@
+{% extends  'base.html.twig' %}
+
+{% block body %}
+<div class="row">
+
+<div class="col-md-3">
+    <div class="list-group">
+        <a href="{{ path('configuration') }}" class="list-group-item list-group-item-action{% if app.request.get('_route') == "configuration" %} active{% endif %}" aria-current="true">
+            <i class="bi bi-bell"></i> Notifications
+        </a>
+        <a href="{{ path('configuration_about') }}" class="list-group-item list-group-item-action{% if app.request.get('_route') == "configuration_about" %} active{% endif %}" aria-current="true">
+            <i class="bi bi-info-circle"></i> A propos
+        </a>
+    </div>
+</div>
+<div class="col-md bg-white rounded p-3 border">
+    {% block content %}
+    {% endblock %}
+</div>
+</div>
+{% endblock %}

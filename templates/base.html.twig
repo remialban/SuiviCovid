@@ -19,6 +19,9 @@
       .turbolinks-progress-bar {
         background-color: #E1000F;
       }
+      .text-justify, p {
+        text-align: justify;
+      }
     </style>
     {% block stylesheets %}{% endblock %}
     <script src="{{ asset('js/bootstrap.bundle.js') }}"></script>
@@ -39,6 +42,16 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{{ path('home') }}">Accueil</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{{ path('configuration') }}">Configuration</a>
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>
     <div class="container mt-3">

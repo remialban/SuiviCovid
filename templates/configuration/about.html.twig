@@ -1,0 +1,16 @@
+{% extends 'configuration/configuration.html.twig' %}
+
+{% block title %}A propos{% endblock %}
+
+{% block content %}
+<h1>A propos</h1>
+<div class="alert alert-danger" role="alert">
+  <i class="bi bi-exclamation-triangle-fill"></i> Cette application n'est pas une application officielle du gouvernement.
+</div>
+<p>Cette application a été réalisé par un adolescent de 16 ans et n'est donc pas une application officielle du gouvernement.</p>
+<h2>Où trouver le code source ?</h2>
+<p>Le code de cette application est géré avec <a href="https://git-scm.com/">git</a> et il est disponible gratuitement sur <a href="https://github.com/remialban/SuiviCovid">Github</a>.</p>
+<h2>Quelles sont les technologies utilisées dans cette application ?</h2>
+<p>Cette page web a été fait avec le framework <a href="https://symfony.com">Symfony</a> qui est français et qui utilise le langage <a href="https://php.net">PHP</a>. Il utilise <a href="https://typesense.org/">TypeSense</a> pour la recherche des personnes qui est facile à mettre en place. Il utilise aussi la police Marianne et les couleurs du gouvernement disponible <a href="https://www.gouvernement.fr/charte/charte-graphique-les-fondamentaux/introduction">ici</a>. Ce site utilise aussi le framework css <a href="https://getbootstrap.com">Bootstrap<a/> qui permet de faire un design plus facilement et responsive (qui s'adapte sur tout type d'appareil). J'utilise également les icônes de <a href="https://icons.getbootstrap.com/">Bootstrap</a>. Enfin pour faciliter la mise en place de cette application, <a href="https://www.docker.com/">Docker</a> est utilisé.</p>
+{% endblock %}
+
