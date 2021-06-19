@@ -24,7 +24,6 @@
       }
     </style>
     {% block stylesheets %}{% endblock %}
-    <script src="{{ asset('js/bootstrap.bundle.js') }}"></script>
 
   </head>
   <body class="bg-light">
@@ -68,7 +67,7 @@
           <a href="https://getbootstrap.com/" class="link-light">Bootstrap</a>.
         </p>
     </div>
-    <script src="dist/js/bootstrap.bundle.js"></script>
+    <script src="{{ asset('js/bootstrap.bundle.js') }}"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.0.0/turbolinks.js"></script>
     {% block scripts %}{% endblock %}

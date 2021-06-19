@@ -1,0 +1,35 @@
+{% extends 'configuration/configuration.html.twig' %}
+
+{% block title %}Configuration{% endblock %}
+
+{% block content %}
+<h1>Notifications</h1>
+<p>Ces informations là vous permettent de lier votre boîte mail à cette application afin de notifier par courriel les personnes venues dans votre établissement s'il y a eu une personne déclaré positive au corovanirus qui a été en contact avec ces dernières.</p>
+{{ form_start(form) }}
+{{ form_row(form.smtp_server, {'label': 'Serveur SMTP :', 'attr': {
+        'placeholder': "Ex : smtp.gmail.com"}, "label_attr": {'class': 'form-label'}}) }}
+<br/>
+{{ form_row(form.smtp_port, {'label': 'Port :', 'attr': {
+        'placeholder': "Ex : 465"}, "label_attr": {'class': 'form-label'}}) }}
+<br/>
+{{ form_row(form.smtp_encryption, {'label': 'Chiffrement :', "label_attr": {'class': 'form-label'}}) }}
+<br/>
+{{ form_row(form.smtp_email, {'label': 'Email :', 'attr': {
+        'placeholder': "Nom d'utilisateur (ou email) de votre boîte mail"}, "label_attr": {'class': 'form-label'}}) }}
+<br/>
+{{ form_row(form.smtp_password, {'label': 'Mot de passe :', 'attr': {
+        'placeholder': "Mot de passe que vous utiliser pour accéder à votre boîte mail"}, "label_attr": {'class': 'form-label'}}) }}
+<br/>
+<button type="submit" class="btn btn-primary mb-3"><i class="bi bi-check2-circle"></i> Valider</button>
+<br/>
+{{ form_end(form) }}
+<h2>Comment remplir ce formulaire ?</h2>
+<p>Vous devez vous rendre <a href="https://www.commentcamarche.net/applis-sites/mail/981-trouver-les-adresses-des-serveurs-de-mail-pop-imap-smtp/">sur ce site</a> pour trouver le serveur SMTP, le port, et le chiffrement en fonction de la messagerie que vous utiliser.</p>
+<p>L'email et le mot de passe correspondent aux idenfiants que vous utiliser pour vous connecter à votre boîte mail. </p>
+<div class="alert alert-primary text-justify" role="alert">
+<i class="bi bi-info-circle-fill"></i> 
+  Si l'envoie d'email ne fonctionne pas, cela peut signifier que les paramètres sont incorrects. 
+  Si jamais tout les paramètres sont correct, essayez de créer un mot de passe d'application depuis votre boîte mail et rentrez ce mot de passe d'application généré par cette dernière à la place du champ mot de passe.
+</div>
+{% endblock %}
+
