@@ -47,13 +47,21 @@ class ConfigurationController extends AbstractController
             $encryption = new Property();
             $encryption->setName("smtp_encryption");
         }
+        $message = $propertyRepository->findOneBy(['name' => 'smtp_message']);
+        if (!$message)
+        {
+            $message = new Property();
+            $message->setName("smtp_message");
+            $message->setValue("Bonjour,<br/><br/>Une personne est venu dans notre établissement qui a été testé positive. Il est venu le même jour que vous êtes venues. Faites-vous tester.<br/><br/>Ensemble, respectons les gestes barrières");
+        }
 
         $configuration = [
             "smtp_server" => $server->getValue(),
             "smtp_port" => $port->getValue(),
             "smtp_email" => $email->getValue(),
             "smtp_password" => $encryption->getValue(),
-            "smtp_encryption" => $encryption->getValue()
+            "smtp_encryption" => $encryption->getValue(),
+            "smtp_message" => $message->getValue()
         ];
 
         $form = $this->createForm(SMTPType::class, $configuration);

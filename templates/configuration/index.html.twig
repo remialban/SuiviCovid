@@ -20,6 +20,9 @@
 {{ form_row(form.smtp_password, {'label': 'Mot de passe :', 'attr': {
         'placeholder': "Mot de passe que vous utiliser pour accéder à votre boîte mail"}, "label_attr": {'class': 'form-label'}}) }}
 <br/>
+{{ form_row(form.smtp_message, {'label': 'Message du mail lorsqu\'une personne a été tester positive :', 'attr': {
+        'placeholder': "Ecrivez votre message ici"}, "label_attr": {'class': 'form-label'}}) }}
+<br/>
 <button type="submit" class="btn btn-primary mb-3"><i class="bi bi-check2-circle"></i> Valider</button>
 <br/>
 {{ form_end(form) }}
