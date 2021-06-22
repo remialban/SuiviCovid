@@ -24,7 +24,7 @@ class PersonSearch
      * Url de TypeSense
      * @var string
      */
-    const API_URL = "http://localhost:8108";
+    const API_URL = "http://typesense:8108";
 
     /**
      * @var EntityManagerInterface
