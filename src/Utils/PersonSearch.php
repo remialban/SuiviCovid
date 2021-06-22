@@ -47,9 +47,70 @@ class PersonSearch
         $this->em = $em;
         $this->client = $client;
         $this->personRepository = $personRepository;
-    }
-
         
+            $this->run("POST", "collections", [
+                "name" => "persons", 
+   "fields" => [
+         [
+            "name" => "id_entity", 
+            "type" => "int64", 
+            "optional" => true 
+         ], 
+         [
+               "name" => "name", 
+               "type" => "string", 
+               "optional" => true 
+            ], 
+         [
+                  "name" => "firstName", 
+                  "type" => "string", 
+                  "optional" => true 
+               ], 
+         [
+                     "name" => "isVaccinated", 
+                     "type" => "bool", 
+                     "optional" => true 
+                  ], 
+         [
+                        "name" => "phoneNumber", 
+                        "type" => "int64", 
+                        "optional" => true 
+                     ], 
+         [
+                           "name" => "email", 
+                           "type" => "string", 
+                           "optional" => true 
+                        ], 
+         [
+                              "name" => "nameStreetAddress", 
+                              "type" => "string", 
+                              "optional" => true 
+                           ], 
+         [
+                                 "name" => "additionalAddress", 
+                                 "type" => "string", 
+                                 "optional" => true 
+                              ], 
+         [
+                                    "name" => "secondAdditionalAddress", 
+                                    "type" => "string", 
+                                    "optional" => true 
+                                 ], 
+         [
+                                       "name" => "zipCode", 
+                                       "type" => "int64", 
+                                       "optional" => true 
+                                    ], 
+         [
+                                          "name" => "municipality", 
+                                          "type" => "string", 
+                                          "optional" => true 
+                                       ] 
+      ] 
+            ]);
+        
+    }
+   
     /**
      * Mettre à jour une personne dans la base de donnée et dans TypeSense
      *
